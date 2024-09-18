@@ -1,6 +1,6 @@
 /*
     Fichier principale pour changer la taille d'un fichier et de voir si le fichier
-    et ouvert correctement.
+    est ouvert correctement.
 
     Fonctions:
 
@@ -10,6 +10,21 @@
     @renvoie: {
         0 = succès, 
         1 = erreur
+    }
+
+    ----------------------------------
+
+    @get_file_size(char *file)
+    @arg: (char *file), argument obligatoire pour renvoyé la taille du fichier
+    @renvoie: {
+        -> taille du fichier (long int)
+    }
+    @exemple:
+    
+    int main(){
+        size_t = get_file_size("log.txt");
+        printf("Taille du fichier: %ld",size_t);
+        return 0;
     }
 
     ----------------------------------
@@ -56,15 +71,23 @@ int change_file_size(char *file,size_t size){
     return 0;
 }
 
+size_t get_file_size(char *file){
+    FILE *file_data;
+    int result = resolve_file_err(file_data,file);
+    if(result != 0) return -1;
+    return _filelenght(file);
+}
+
 int resolve_file_err(FILE *file,char *file_name){  
     rewind(file);
     file = fopen(
         file_name;
-        "w"
+        "a"
     );
     if(!file){
         fprintf(stderr,"Impossible d'ouvrir le fichier: %s\n",strerror(GetLastError()));
         return 1;    
     }
+    fclose(file);
     return 0;
 }
