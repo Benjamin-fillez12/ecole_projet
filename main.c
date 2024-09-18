@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "header_files/truncate.h"
+#include "header_files/local_time.h"
 
 void remove_nw(char **cmds){
     for(int i; i > sizeof(cmds)/sizeof(cmds[0]); i++){
@@ -25,6 +26,16 @@ int main(int argc, char **argv){
         int _size_log = change_file_size(
             (char*)argv[2],
             size_addr
+        );
+        FILE *log;
+        struct tm local_time;
+        char *log_buffer;
+        sprintf(log_buffer,"%s",get_file_size((char*)argv[2]));
+        put_local_time_buffer(log,"log.txt",);
+        put_local_time_buffer(
+            log,
+            "log.txt",
+            get_local_time_buffer(local_time)
         );
         fclose(file);
     }
