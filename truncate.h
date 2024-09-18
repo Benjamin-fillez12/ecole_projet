@@ -12,3 +12,4 @@
 
 int change_file_size(FILE *,size_t);
 int resolve_file_err(FILE *,char *);
+size_t get_file_size(char *)
