@@ -6,10 +6,10 @@
 
 #include "header_files/truncate.h"
 
-char *get_local_time_buffer(struct tm* time){
-    time = localtime(&(time_t){time(NULL)});
-    char *time_buffer = asctime(tm)
-    return time_buffer
+char *get_local_time_buffer(struct tm* local_time){
+    local_time = localtime(&(time_t){time(NULL)});
+    char *time_buffer = asctime(local_time);
+    return time_buffer;
 };
 
 void put_local_time_buffer(FILE *file,char *file_name, char *buffer){
